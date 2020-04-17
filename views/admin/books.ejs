@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs')%>
+    <%- include('../includes/navigation.ejs')%>
+
+    <section class="allBooksSection">
+        <div class="allBooksContainer container ">
+            <% if(books.length > 0) { %>
+                <h1 class="display-4 text-white text-center mt-5">My Books</h1>
+                <!-- <h1 class="display-4 text-white text-center mt-5">Available Books</h1> -->
+                <hr style="background-color: white;">
+                <div class="row justify-content-center mt-5">
+                    <% books.forEach( book => { %>
+                        <div class="col-10 col-sm-6 col-md-4 col-lg-3 bookOutsideContainer"> 
+                            <div class="bookContainer">
+                                <h1 class="h3 lead mb-3"><%= book.title %></h1>
+                                <img src="<%= book.imageUrl %>" alt="<%= book.title %>" class="authorBookImage"> 
+                                <h2 class="h4 my-2">Rs.<%= book.expectedPrice %></h2>
+                                    <!-- <a class="btn btn-primary" href="/book-details/<%= book._id%>">Details</a> -->
+                                <form action="/delete-book" method="POST">
+                                    <input type="hidden" name="bookId" value="<%= book._id %>">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+                                    <a href="/edit-book/<%=book._id%>?edit=true" class="btn btn-success d-inline-block text-white" >Edit</a>
+                                    <button class="btn btn-success d-inline-block" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <h1 class="display-4 text-center text-white mt-5">You have not added any book yet.</h1>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('../includes/end.ejs')%>

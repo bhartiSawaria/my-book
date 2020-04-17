@@ -1,0 +1,60 @@
+<%- include('../includes/head.ejs')%>
+    <%- include('../includes/navigation.ejs')%>
+
+    <section class="formSection">
+        <div class="formContainer mt-5">
+            <form action="<% if(!isEdit) {%> /add-book <% } else { %> /edit-book <%} %>" method="POST" enctype="multipart/form-data">
+                <h1 class="display-3 text-center">Share Book</h1>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control" type="text" name="title" id="title" value="<% if(isEdit) {%> <%= book.title%> <% } %>" required>
+                </div>
+                <div class="form-group mb-0">
+                    <label for="#">Image</label>
+                </div>
+                <div class="custom-file mb-3">
+                    <label class="custom-file-label" for="image">Choose Image</label>
+                    <input class="custom-file-input" type="file" name="image" id="image" value="<% if(isEdit) {%> <%= book.imageUrl%> <% } %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author name</label>
+                    <input class="form-control" type="text" name="author" id="author" value="<% if(isEdit) {%> <%= book.author%> <% } %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="edition">Edition</label>
+                    <input class="form-control" type="text" name="edition" id="edition" value="<% if(isEdit) {%> <%= book.edition%> <% } %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="5" required><% if(isEdit) {%> <%= book.description%> <% } %></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="col-12 col-sm-6 form-group">
+                        <label for="originalPrice">Original Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rs.</span>
+                            </div>
+                            <input class="form-control" type="text" name="originalPrice" id="originalPrice" value="<% if(isEdit) {%> <%= book.originalPrice%> <% } %>" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 form-group">
+                        <label for="expectedPrice">Expected Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rs.</span>
+                            </div>
+                            <input class="form-control" type="text" name="expectedPrice" id="expectedPrice" value="<% if(isEdit) {%> <%= book.expectedPrice%> <% } %>" required>
+                        </div>
+                    </div>
+                </div>
+                <% if(isEdit) {%>
+                    <input type="hidden" name="bookId" value="<%= book._id %>">
+                <% } %>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn btn-primary btn-block mt-4" type="submit"><%if(isEdit){%>Update<% } else {%>Submit<% } %></button>
+            </form>
+        </div>
+    </section>
+
+<%- include('../includes/end.ejs')%>

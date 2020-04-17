@@ -1,0 +1,45 @@
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom ">
+    <div class="container">
+      <a href="/" class="navbar-brand">myBook</a> 
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navBarDrop">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navBarDrop">
+        <ul class="navbar-nav ml-auto">
+          <% if(isAuthenticated) {%>
+            <li class="nav-item dropdown mr-2">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= username %></a>
+                <ul class="dropdown-menu">
+                  <a href="/profile" class="dropdown-item">My Profile</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="/admin/books" class="dropdown-item">My Books</a>
+                </ul>
+            </li>
+            <li class="nav-item mr-2">
+              <a href="/books" class="nav-link">All Books</a>
+            </li>
+            <li class="nav-item mr-2">
+              <a href="/add-book" class="nav-link">Add Book</a>
+            </li>
+            <li class="nav-item mr-2">
+              <a href="/search" class="nav-link">Search</a>
+            </li>
+          <% } else { %>  
+            <li class="nav-item mr-2">
+              <a href="/signup" class="nav-link">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a href="/login" class="nav-link">Login</a>
+            </li>
+          <% } %>
+          <% if(isAuthenticated) { %>
+            <form action="/logout"  method="POST" class="form-inline">
+              <button class="btn btn-success logoutButton" type="submit">Logout</button>
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </form>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>

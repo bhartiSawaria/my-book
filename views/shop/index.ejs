@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs')%>
+    <%- include('../includes/navigation.ejs')%>
+
+    <section class="allBooksSection">
+        <div class="allBooksContainer container ">
+            <% if(books.length > 0) { %>
+                <% if(path === '/search') {%>
+                    <h1 class="display-4 text-white text-center mt-5">Results for <%= searchText %></h1>
+                <% } else {%>
+                    <h1 class="display-4 text-white text-center mt-5">Books</h1>
+                    <hr style="background-color: white;">
+                <% } %>
+                <div class="row justify-content-center mt-5">
+                    <% books.forEach( book => { %>
+                        <div class="col-10 col-sm-6 col-md-4 col-lg-3 bookOutsideContainer"> 
+                            <div class="bookContainer">
+                                <h1 class="h3 lead mb-3"><%= book.title %></h1>
+                                <img src="<%= book.imageUrl %>" alt="<%= book.title %>" class="shopBookImage"> 
+                                <h2 class="">Rs.<%= book.expectedPrice %></h2>
+                                <a class="btn btn-success" href=" <% if(isAuthenticated) { %> /book-details/<%= book._id %> <%} else {%> /login <% } %>">Details</a>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <% if(path === '/search'){%>
+                    <h1 class="display-3 text-center mt-5 text-white">No matching books found!!</h1>
+                <% } else {%>
+                    <h1 class="display-3 text-center mt-5 text-white">No Books</h1>
+                <% } %>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('../includes/end.ejs')%>

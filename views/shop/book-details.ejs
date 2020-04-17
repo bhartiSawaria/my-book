@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs')%>
+    <%- include('../includes/navigation.ejs')%>
+
+    <section class="bookDetailsSection">
+        <div class="bookDetailContainer m-auto">
+            <img src="<%= book.imageUrl %>" alt="<%= book.title %>" class="bookDetailsImage">
+            <div class="bookDescription">
+                <h3 class="mt-4"><%= book.title %></h3>
+                <hr>
+                <h4 class="d-inline-block">Rs. <%= book.expectedPrice %></h4>
+                <h4 class="d-inline-block text-danger"><strike> Rs. <%= book.originalPrice %> </strike></h4>
+                <small class="text-muted d-block">(Offered Price)</small>
+                <p class="lead"><%= book.description %></p>
+                <h5>Edition: <%= book.edition %></h3>
+                <h5 class="font-italic">Author: <%= book.author%></h5>
+                <hr>
+                <!-- <div class="container bg-dark text-white p-4"> -->
+                <div class="jumbotron">
+                    <h4>Seller Details</h4>
+                    <h6>Name: <%= seller.name%></h6>
+                    <h6>Contact No: <%= seller.contactNo%></h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%- include('../includes/end.ejs')%>

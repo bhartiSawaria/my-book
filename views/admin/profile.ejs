@@ -1,0 +1,11 @@
+<%- include('../includes/head.ejs')%>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="container my-5">
+    <div class="jumbotron text-center m-auto">
+        <h1 class="display-3"><%= user.name%></h1>
+        <hr>
+        <p class="lead">Email: <%= user.email%></p>
+        <p class="lead">Contact No.: <%= user.contactNo%></p>
+    </div>
+</div>
+<%- include('../includes/end.ejs')%>

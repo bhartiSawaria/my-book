@@ -1,0 +1,45 @@
+<%- include('../includes/head.ejs')%>
+    <%- include('../includes/navigation.ejs')%>
+   
+    <section class="formSection">
+        <div class="formContainer mt-5">
+            <form action="/signup" method="POST" enctype="multipart/form-data">
+                <h1 class="display-3 text-center mb-5">Sign Up</h1>
+                <div class="form-group">
+                    <label for="name" class="lead">Name</label>
+                    <input class="form-control" type="text" id="name" name="name" value="<%= oldData.name %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactNo" class="lead">Contact Number</label>
+                    <input class="form-control" type="text" id="contactNo" name="contactNo" value="<%= oldData.contactNo %>" required>
+                    <% if(validationErrors.find( e => e.param === "contactNo") ) { %>
+                        <h6 class="text-danger p-2"><%= validationErrors[validationErrors.findIndex(e => e.param === "contactNo")].msg %></h6>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="lead">E-mail</label>
+                    <input class="form-control" type="email" id="email" name="email" value="<%= oldData.email %>" required>
+                    <% if(validationErrors.find( e => e.param === "email") ) { %>
+                        <h6 class="text-danger p-2"><%= validationErrors[validationErrors.findIndex(e => e.param === "email")].msg %></h6>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="lead">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" value="<%= oldData.password %>" required>
+                    <% if(validationErrors.find( e => e.param === "password") ) { %>
+                        <h6 class="text-danger p-2"><%= validationErrors[validationErrors.findIndex(e => e.param === "password")].msg %></h6>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="lead">Confirm Password</label>
+                    <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" value="<%= oldData.confirmPassword %>" required>
+                    <% if(validationErrors.find( e => e.param === "confirmPassword") ) { %>
+                        <h6 class="text-danger p-2"><%= validationErrors[validationErrors.findIndex(e => e.param === "confirmPassword")].msg %></h6>
+                    <% } %>
+                </div>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn btn-primary btn-block mt-5" type="submit">Sign Up</button>
+            </form>
+        </div>
+    </section>
+<%- include('../includes/end.ejs')%>

@@ -1,0 +1,110 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    width: 100%;
+}
+
+body{
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    background-color: #222831;
+}
+
+
+/************Form Styling****************/
+
+.formSection{
+    width: 85%;
+    color: white;
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+    .formSection{
+        width: 45%;
+    }
+}
+
+/* book styling */
+
+.bookOutsideContainer{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.bookContainer{
+    background-color: #ffff;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    width: 95%;
+}
+
+.bookContainer:hover,
+.bookContainer:active{
+    color: black;
+    border: 5px solid white;
+}
+
+.bookDetailsSection{
+    margin-top: 6rem;
+}
+
+.bookDetailContainer{
+    width: 90%;
+    margin-top: 10rem;
+    padding: 1.5rem;
+    background-color: white;
+    text-align: center;
+}
+
+.authorBookImage, .shopBookImage{
+    width: 70%;
+    height: 200px;
+}
+
+.bookDetailsImage{
+    width: 80%;
+    max-width: 350px;
+    min-width: 240px;
+    height: 300px;
+}
+
+@media (max-width: 767px) and (min-width: 576px){
+    .bookDetailContainer{
+        width: 60%;
+    }
+
+    .authorBookImage, .shopBookImage{
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .bookDetailContainer{
+        width: 70%;
+    }
+
+    .authorBookImage, .shopBookImage{
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .bookDetailContainer{
+        width: 40%;
+    }
+
+    .authorBookImage, .shopBookImage{
+        width: 90%;
+    }
+}
+
+.searchInput{
+    width: 60%;
+}
+
