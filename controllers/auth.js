@@ -61,14 +61,12 @@ exports.postSignUp = (req, res, next) => {
         return user.save();
     })
     .then(result => {
-        return transporter.sendMail({
+        transporter.sendMail({
             to: email,
             from: 'myBook@test.com',
             subject: 'Sign Up succedded',
             html: '<h1>Sign Up to myShop succedded!!</h1>'
-        })
-    })
-    .then(result => {
+        });
         res.redirect('/login');
     })
     .catch(err => {
